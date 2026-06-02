@@ -1,0 +1,39 @@
+# MongoDB Model Context Protocol Server Config
+# For Google Cloud Agent Builder integration
+
+name: agent_vault_mongodb
+version: "1.0"
+description: "Persistent agent memory for crypto trading multi-agent system"
+
+tools:
+  - name: store_trade_signal
+    description: "Store a trading signal with RSI/MACD/Bollinger data"
+    parameters:
+      symbol: string
+      signal: string  # BUY/SELL/HOLD
+      rsi: number
+      momentum: number
+      price: number
+      
+  - name: query_signals
+    description: "Query historical trading signals"
+    parameters:
+      symbol: string (optional)
+      signal_type: string (optional)
+      limit: number (default 50)
+      
+  - name: store_market_data
+    description: "Cache real-time market data"
+    parameters:
+      symbol: string
+      price: number
+      volume: number
+      change_pct: number
+      
+  - name: store_risk_alert
+    description: "Log risk management alerts"
+    parameters:
+      type: string  # MAX_LOSS / VOLATILITY / LIQUIDITY
+      symbol: string
+      severity: string  # LOW / MEDIUM / HIGH
+      message: string
